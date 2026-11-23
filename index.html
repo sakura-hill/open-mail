@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>桜ヶ丘中央区</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #222222;
+      --muted-text-color: #4a5568;
+      --primary-color: #2c5282;      /* 落ち着いた紺色 */
+      --primary-hover: #1a365d;
+      --primary-active: #153e75;
+      --disabled-bg: #cbd5e0;
+      --disabled-text: #718096;
+      --error-bg: #fff5f5;
+      --error-border: #c53030;
+      --error-text: #9b2c2c;
+      --focus-ring: #63b3ed;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100dvh;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Meiryo", "Noto Sans JP", sans-serif;
+      -webkit-text-size-adjust: 100%;
+      line-height: 1.7;
+    }
+
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100dvh;
+      width: 100%;
+      padding: 0 20px 40px;
+    }
+
+    /* Page body内上部 1/4 付近に見出しを配置 */
+    .header-area {
+      width: 100%;
+      max-width: 680px;
+      padding-top: min(22dvh, 180px);
+      text-align: center;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 18pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #1a202c;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 14px;
+      display: inline-block;
+    }
+
+    /* 中央のメインエリア */
+    .main-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 640px;
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    /* エラー表示 */
+    .error-box {
+      display: none;
+      width: 100%;
+      max-width: 520px;
+      margin-bottom: 24px;
+      padding: 16px 20px;
+      background-color: var(--error-bg);
+      border: 2px solid var(--error-border);
+      border-radius: 10px;
+      color: var(--error-text);
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .error-box.is-visible {
+      display: block;
+    }
+
+    /* メインボタン */
+    .mail-button {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 460px;
+      min-height: 68px;
+      padding: 18px 28px;
+      font-family: inherit;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #ffffff;
+      background-color: var(--primary-color);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(44, 82, 130, 0.18);
+      transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    .mail-button:hover:not(:disabled) {
+      background-color: var(--primary-hover);
+      box-shadow: 0 6px 16px rgba(26, 54, 93, 0.24);
+    }
+
+    .mail-button:active:not(:disabled) {
+      background-color: var(--primary-active);
+      transform: translateY(1px);
+    }
+
+    .mail-button:focus-visible {
+      outline: 4px solid var(--focus-ring);
+      outline-offset: 3px;
+    }
+
+    .mail-button:disabled {
+      background-color: var(--disabled-bg);
+      color: var(--disabled-text);
+      cursor: not-allowed;
+      box-shadow: none;
+      border-color: #a0aec0;
+    }
+
+    /* 説明書き */
+    .description {
+      margin: 24px 0 0;
+      max-width: 540px;
+      font-size: 1.15rem;
+      color: var(--muted-text-color);
+      line-height: 1.8;
+    }
+
+    /* タブレット向け調整 */
+    @media (max-width: 768px) {
+      .header-area {
+        padding-top: 18dvh;
+      }
+
+      .mail-button {
+        font-size: 1.2rem;
+        min-height: 66px;
+      }
+
+      .description {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* スマートフォン向け調整 */
+    @media (max-width: 480px) {
+      .page-wrapper {
+        padding: 0 16px 32px;
+      }
+
+      .header-area {
+        padding-top: 14dvh;
+      }
+
+      .page-title {
+        padding-bottom: 10px;
+      }
+
+      .main-area {
+        padding: 24px 0;
+      }
+
+      .error-box {
+        font-size: 1.05rem;
+        padding: 14px 16px;
+        margin-bottom: 20px;
+      }
+
+      .mail-button {
+        font-size: 1.125rem;
+        padding: 16px 20px;
+        min-height: 62px;
+      }
+
+      .description {
+        font-size: 1.05rem;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="header-area">
+      <h1 class="page-title">桜ヶ丘中央区</h1>
+    </header>
+
+    <main class="main-area">
+      <div id="errorBox" class="error-box" role="alert" aria-live="polite">
+        エラー：指定値が不足しています
+      </div>
+
+      <button id="openMailButton" class="mail-button" type="button">
+        自治会システムへのメールを開く
+      </button>
+
+      <p class="description">
+        メールが開いたら、必要に応じて追加メッセージを記述して送信お願いします。
+      </p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      // デフォルトの宛先（必要に応じて参照・切り替え用）
+      const DEFAULT_TO = "sakuragaoka.central@gmail.com";
+
+      const params = new URLSearchParams(window.location.search);
+      const rawTo = params.get("to");
+      const subject = params.get("subject") || "";
+      const body = params.get("body") || "";
+
+      const to = rawTo ? rawTo.trim() : "";
+
+      const errorBox = document.getElementById("errorBox");
+      const openMailButton = document.getElementById("openMailButton");
+
+      // to が未指定または空の場合はエラー表示にしてボタンを不活性化
+      if (!to) {
+        errorBox.classList.add("is-visible");
+        openMailButton.disabled = true;
+        return;
+      }
+
+      // mailto URL を構築（スペースを '+' ではなく '%20' にするため encodeURIComponent を使用）
+      function buildMailtoUrl(recipient, mailSubject, mailBody) {
+        const queryParts = [];
+        if (mailSubject) {
+          queryParts.push("subject=" + encodeURIComponent(mailSubject));
+        }
+        if (mailBody) {
+          queryParts.push("body=" + encodeURIComponent(mailBody));
+        }
+        const encodedRecipient = encodeURIComponent(recipient).replace(/%40/g, "@");
+        return "mailto:" + encodedRecipient + (queryParts.length > 0 ? "?" + queryParts.join("&") : "");
+      }
+
+      const mailtoUrl = buildMailtoUrl(to, subject, body);
+
+      openMailButton.addEventListener("click", function () {
+        window.location.href = mailtoUrl;
+      });
+    })();
+  </script>
+</body>
+</html>
